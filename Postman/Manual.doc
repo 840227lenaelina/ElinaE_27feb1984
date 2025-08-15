@@ -1,0 +1,51 @@
+Инструкция для работы с коллекцией Postman по сайту https://altaivita.ru/ для смоук-тестирования корзины
+В коллекции содержатся 3 запроса:
+1 - Добавление товаров в корзину
+2 - Увеличение количества товаров в корзине
+3 - Удаление товаров из корзины
+
+Для работы с коллекцией записаны в перемееные следующие данные:
+content-type - application/x-www-form-urlencoded; charset=UTF-8
+BASE_URL - https://altaivita.ru/
+
+Добавление товаров в корзину:
+Для добавления товаров в корзину отправляем POST-запрос 
+на адрес {{BASE_URL}}engine/cart/add_products_to_cart_from_preview.php
+тело запроса (прописывается в x-www-form-urlencoded): 
+product_id: 1704* (на сайте через DevTools находим id продукта, который хочем добавить)
+LANG_key: ru
+S_wh: 1
+S_CID: 6a427ba09e502228953dc4fc6d7eda22
+S_cur_code: rub
+S_koef: 1
+quantity: 1
+S_hint_code:
+S_customerID:
+
+Увеличение количества товаров в корзине
+Для увеличения количества товаров в корзине отправляем POST-запрос 
+на адрес {{BASE_URL}}engine/cart/action_with_basket_on_cart_page.php
+тело запроса (прописывается в x-www-form-urlencoded):
+itemID: 920579* (на сайте переходим в корзину и через DevTools находим data-item-id заказа)
+quantity: 2
+action: update_quantity
+LANG_key: ru
+S_wh: 1
+S_CID: 6a427ba09e502228953dc4fc6d7eda22
+S_cur_code: rub
+S_koef:1
+S_hint_code:
+S_customerID:
+
+Удаление товаров из корзины
+Для удаления товаров из корзины отправляем POST-запрос 
+на адрес {{BASE_URL}}engine/cart/delete_products_from_cart_preview.php
+тело запроса (прописывается в x-www-form-urlencoded): 
+product_id: 1704*(берем из запроса на добавление из product_id или на сайте через DevTools находим id продукта)
+LANG_key: ru
+S_wh: 1
+S_CID: 6a427ba09e502228953dc4fc6d7eda22
+S_cur_code: rub
+S_koef: 1
+S_hint_code:
+S_customerID:
